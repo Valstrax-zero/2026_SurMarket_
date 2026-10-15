@@ -89,9 +89,16 @@
         android:id="@+id/BTN_FRGProductsList_AddProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_button_rounded"
-        android:layout_marginHorizontal="16sp"
+        android:text="Añadir Producto"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:text="@string/FRGProductList_BTNAddProduct"
+        android:layout_marginHorizontal="16sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RCV_FRGProductsList_ProductsList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:listitem="@layout/item_productslist"
         />
 </LinearLayout>
