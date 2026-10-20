@@ -1,6 +1,5 @@
-package bo.edu.uajms.sistemasbermejo.programacionmovil.aramayofernando.surmarket.models
+package com.example.surmarket.models
 
-import android.R
 
 data class product(
     val id: Int,

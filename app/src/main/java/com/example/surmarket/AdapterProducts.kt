@@ -1,37 +1,35 @@
-package bo.edu.uajms.sistemasbermejo.programacionmovil.aramayofernando.surmarket
+package com.example.surmarket
 
-import android.adservices.adselection.PerBuyerConfiguration
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import bo.edu.uajms.sistemasbermejo.programacionmovil.aramayofernando.surmarket.models.product
+import com.example.surmarket.models.product
 
-class AdapterProducts (
-    private val productsList: List <product>,
+class AdapterProducts(
+    private val productsList: List<product>,
     private val clickOnBuy: (product) -> Unit
-) : RecyclerView.Adapter<AdapterProducts.ViewHolderProduct>(
-) {
+) : RecyclerView.Adapter<AdapterProducts.ViewHolderProduct>() {
 
-    //===============================
-    class ViewHolderProduct(){
+    class ViewHolderProduct(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
 
     }
-    //===============================
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): AdapterProducts.ViewHolderProduct {
+    ): ViewHolderProduct {
         TODO("Not yet implemented")
     }
 
     override fun onBindViewHolder(
-        holder: AdapterProducts.ViewHolderProduct,
+        holder: ViewHolderProduct,
         position: Int
     ) {
         TODO("Not yet implemented")
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return productsList.size
     }
 }
