@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
 class FragmentLogin: Fragment() {
     private lateinit var ETX_FRGLogin_UserName: EditText
@@ -24,13 +25,11 @@ class FragmentLogin: Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_login,container, true)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initializeViews(view)
         configureListeners()
     }
-
     private fun initializeViews(view: View) {
         ETX_FRGLogin_UserName=view.findViewById(R.id.ETX_FRGLogin_UserName)
         ETX_FRGLogin_Password=view.findViewById(R.id.ETX_FRGLogin_Password)
@@ -38,32 +37,29 @@ class FragmentLogin: Fragment() {
         BTN_FRGLogin_Login=view.findViewById(R.id.BTN_FRGLogin_Login)
         BTN_FRGLogin_Register=view.findViewById(R.id.BTN_FRGLogin_Register)
     }
-
     private fun configureListeners() {
         TXV_FRGLogin_RecoverPassword.setOnClickListener() {
-
         }
-
         BTN_FRGLogin_Login.setOnClickListener() {
             SignIn()
         }
-
         BTN_FRGLogin_Register.setOnClickListener(){
 
         }
     }
-
     private fun SignIn(){
         val user = ETX_FRGLogin_UserName.text.toString().trim()
         val password=ETX_FRGLogin_Password.text.toString().trim()
         if(!verifyIntegrity(user,password)){
             return
         }
-        if(verifyCredentials(user,password)){
+        if(verifyCredentials(user,password))
+        {
             Toast.makeText(
                 requireContext(),
                 getString(R.string.loginWelcome),
                 Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_login_to_products_List)
         }
         else
         {
@@ -73,7 +69,6 @@ class FragmentLogin: Fragment() {
         }
 
     }
-
     private fun verifyIntegrity(user: String, password: String): Boolean {
         var res = true
         if(user.isNotEmpty()){
@@ -84,7 +79,6 @@ class FragmentLogin: Fragment() {
         {
             ETX_FRGLogin_UserName.error=null
         }
-
         if(user.isNotEmpty()){
             ETX_FRGLogin_Password.error=getString(R.string.passwordEmpty)
             res=false
@@ -95,7 +89,6 @@ class FragmentLogin: Fragment() {
         }
         return res
     }
-
     private fun verifyCredentials(user: String, password: String): Boolean {
         return user=="admin" && password=="123456"
     }
