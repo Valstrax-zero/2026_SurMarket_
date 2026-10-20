@@ -11,7 +11,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 
-class FragmentLogin: Fragment() {
+class FragmentLogin : Fragment() {
+
     private lateinit var ETX_FRGLogin_UserName: EditText
     private lateinit var ETX_FRGLogin_Password: EditText
     private lateinit var TXV_FRGLogin_RecoverPassword: TextView
@@ -22,74 +23,113 @@ class FragmentLogin: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_login,container, true)
+    ): View {
+        return inflater.inflate(
+            R.layout.fragment_login,
+            container,
+            false
+        )
     }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
         super.onViewCreated(view, savedInstanceState)
         initializeViews(view)
         configureListeners()
     }
+
     private fun initializeViews(view: View) {
-        ETX_FRGLogin_UserName=view.findViewById(R.id.ETX_FRGLogin_UserName)
-        ETX_FRGLogin_Password=view.findViewById(R.id.ETX_FRGLogin_Password)
-        TXV_FRGLogin_RecoverPassword=view.findViewById(R.id.TXV_FRGLogin_RecoverPassword)
-        BTN_FRGLogin_Login=view.findViewById(R.id.BTN_FRGLogin_Login)
-        BTN_FRGLogin_Register=view.findViewById(R.id.BTN_FRGLogin_Register)
+        ETX_FRGLogin_UserName =
+            view.findViewById(R.id.ETX_FRGLogin_UserName)
+
+        ETX_FRGLogin_Password =
+            view.findViewById(R.id.ETX_FRGLogin_Password)
+
+        TXV_FRGLogin_RecoverPassword =
+            view.findViewById(R.id.TXV_FRGLogin_RecoverPassword)
+
+        BTN_FRGLogin_Login =
+            view.findViewById(R.id.BTN_FRGLogin_Login)
+
+        BTN_FRGLogin_Register =
+            view.findViewById(R.id.BTN_FRGLogin_Register)
     }
+
     private fun configureListeners() {
-        TXV_FRGLogin_RecoverPassword.setOnClickListener() {
+        TXV_FRGLogin_RecoverPassword.setOnClickListener {
+
         }
-        BTN_FRGLogin_Login.setOnClickListener() {
-            SignIn()
+
+        BTN_FRGLogin_Login.setOnClickListener {
+            signIn()
         }
-        BTN_FRGLogin_Register.setOnClickListener(){
+
+        BTN_FRGLogin_Register.setOnClickListener {
 
         }
     }
-    private fun SignIn(){
-        val user = ETX_FRGLogin_UserName.text.toString().trim()
-        val password=ETX_FRGLogin_Password.text.toString().trim()
-        if(!verifyIntegrity(user,password)){
+
+    private fun signIn() {
+        val user =
+            ETX_FRGLogin_UserName.text.toString().trim()
+
+        val password =
+            ETX_FRGLogin_Password.text.toString().trim()
+
+        if (!verifyIntegrity(user, password)) {
             return
         }
-        if(verifyCredentials(user,password))
-        {
+
+        if (verifyCredentials(user, password)) {
             Toast.makeText(
                 requireContext(),
                 getString(R.string.loginWelcome),
-                Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_login_to_products_List)
-        }
-        else
-        {
+                Toast.LENGTH_SHORT
+            ).show()
+
+            findNavController().navigate(
+                R.id.action_login_to_products_List
+            )
+        } else {
             Toast.makeText(
-                requireContext(),getString(R.string.loginError),
-                Toast.LENGTH_SHORT).show()
+                requireContext(),
+                getString(R.string.loginError),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    private fun verifyIntegrity(
+        user: String,
+        password: String
+    ): Boolean {
+        var result = true
+
+        if (user.isEmpty()) {
+            ETX_FRGLogin_UserName.error =
+                getString(R.string.userEmpty)
+            result = false
+        } else {
+            ETX_FRGLogin_UserName.error = null
         }
 
+        if (password.isEmpty()) {
+            ETX_FRGLogin_Password.error =
+                getString(R.string.passwordEmpty)
+            result = false
+        } else {
+            ETX_FRGLogin_Password.error = null
+        }
+
+        return result
     }
-    private fun verifyIntegrity(user: String, password: String): Boolean {
-        var res = true
-        if(user.isNotEmpty()){
-            ETX_FRGLogin_UserName.error=getString(R.string.userEmpty)
-            res=false
-        }
-        else
-        {
-            ETX_FRGLogin_UserName.error=null
-        }
-        if(user.isNotEmpty()){
-            ETX_FRGLogin_Password.error=getString(R.string.passwordEmpty)
-            res=false
-        }
-        else
-        {
-            ETX_FRGLogin_Password.error=null
-        }
-        return res
-    }
-    private fun verifyCredentials(user: String, password: String): Boolean {
-        return user=="admin" && password=="123456"
+
+    private fun verifyCredentials(
+        user: String,
+        password: String
+    ): Boolean {
+        return user == "admin" && password == "123456"
     }
 }

@@ -1,7 +1,11 @@
 package com.example.surmarket
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.surmarket.models.product
 
@@ -13,20 +17,57 @@ class AdapterProducts(
     class ViewHolderProduct(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
 
+        val category: TextView =
+            itemView.findViewById(R.id.TXV_ITProductList_Category)
+
+        val productName: TextView =
+            itemView.findViewById(R.id.TXV_ITProductList_ProductName)
+
+        val price: TextView =
+            itemView.findViewById(R.id.TXV_ITProductList_Price)
+
+        val buyButton: Button =
+            itemView.findViewById(R.id.BTN_ITProductList_Buy)
+
+        val productImage: ImageView =
+            itemView.findViewById(R.id.IMV_ITProductList_ProductImage)
     }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): ViewHolderProduct {
-        TODO("Not yet implemented")
+        val view = LayoutInflater.from(parent.context).inflate(
+            R.layout.item_productslist,
+            parent,
+            false
+        )
+
+        return ViewHolderProduct(view)
     }
 
     override fun onBindViewHolder(
         holder: ViewHolderProduct,
         position: Int
     ) {
-        TODO("Not yet implemented")
+        val currentProduct = productsList[position]
+
+        holder.category.text =
+            "Categoria: ${currentProduct.category}"
+
+        holder.productName.text =
+            currentProduct.name
+
+        holder.price.text =
+            "Precio: %.2f Bs.".format(currentProduct.price)
+
+        holder.productImage.setImageResource(
+            R.drawable.ic_surmarket
+        )
+
+        holder.buyButton.setOnClickListener {
+            clickOnBuy(currentProduct)
+        }
     }
 
     override fun getItemCount(): Int {
