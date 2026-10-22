@@ -21,38 +21,9 @@ class FragmentProductsList : Fragment() {
     private lateinit var BTN_FRGProductsList_AddProduct: Button
     private lateinit var RCV_FRGProductsList_ProductsList: RecyclerView
 
-    private val productsList = listOf(
-        product(
-            id = 1,
-            name = "Arroz",
-            category = "Alimentos",
-            price = 4.50,
-            imageUrl = "",
-            description = "Arroz de primera calidad",
-            available = true,
-            stock = 20
-        ),
-        product(
-            id = 2,
-            name = "Aceite",
-            category = "Alimentos",
-            price = 12.00,
-            imageUrl = "",
-            description = "Aceite vegetal",
-            available = true,
-            stock = 15
-        ),
-        product(
-            id = 3,
-            name = "Azúcar",
-            category = "Alimentos",
-            price = 6.50,
-            imageUrl = "",
-            description = "Azúcar blanca",
-            available = true,
-            stock = 10
-        )
-    )
+    private lateinit var adapterProducts: AdapterProducts
+
+    private val productsList = mutableListOf<product>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -73,8 +44,9 @@ class FragmentProductsList : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initializeViews(view)
-        configureRecyclerView()
         configureListeners()
+        configureRecyclerView()
+        loadSampleProducts()
     }
 
     private fun initializeViews(view: View) {
@@ -94,20 +66,6 @@ class FragmentProductsList : Fragment() {
             view.findViewById(R.id.RCV_FRGProductsList_ProductsList)
     }
 
-    private fun configureRecyclerView() {
-        RCV_FRGProductsList_ProductsList.layoutManager =
-            LinearLayoutManager(requireContext())
-
-        RCV_FRGProductsList_ProductsList.adapter =
-            AdapterProducts(productsList) { selectedProduct ->
-                Toast.makeText(
-                    requireContext(),
-                    "Compraste ${selectedProduct.name}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-    }
-
     private fun configureListeners() {
         BTN_FRGProductsList_AddProduct.setOnClickListener {
             Toast.makeText(
@@ -124,5 +82,82 @@ class FragmentProductsList : Fragment() {
                 Toast.LENGTH_SHORT
             ).show()
         }
+    }
+
+    private fun configureRecyclerView() {
+        adapterProducts = AdapterProducts(
+            productsList = productsList,
+            clickOnBuy = { selectedProduct ->
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.addCart, selectedProduct.name),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        )
+
+        RCV_FRGProductsList_ProductsList.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = adapterProducts
+        }
+    }
+
+    private fun loadSampleProducts() {
+        val sampleProducts = listOf(
+            product(
+                id = 1,
+                name = "Camisa",
+                category = "Ropa de Varón",
+                price = 180.0,
+                imageUrl = "",
+                description = "Camisa de Varón Tommy roja",
+                available = true,
+                stock = 1
+            ),
+            product(
+                id = 2,
+                name = "Pantalón",
+                category = "Ropa de Varón",
+                price = 180.0,
+                imageUrl = "",
+                description = "Pantalón de Varón Tommy rojo",
+                available = true,
+                stock = 1
+            ),
+            product(
+                id = 3,
+                name = "Zapatilla",
+                category = "Calzado de Varón",
+                price = 180.0,
+                imageUrl = "",
+                description = "Zapatilla de Varón",
+                available = true,
+                stock = 1
+            ),
+            product(
+                id = 4,
+                name = "Zapatos",
+                category = "Calzado de Varón",
+                price = 180.0,
+                imageUrl = "",
+                description = "Zapatos de Varón",
+                available = true,
+                stock = 1
+            ),
+            product(
+                id = 5,
+                name = "Corbata",
+                category = "Accesorios de Varón",
+                price = 180.0,
+                imageUrl = "",
+                description = "Corbata de Varón",
+                available = true,
+                stock = 1
+            )
+        )
+
+        productsList.clear()
+        productsList.addAll(sampleProducts)
+        adapterProducts.notifyChanged()
     }
 }

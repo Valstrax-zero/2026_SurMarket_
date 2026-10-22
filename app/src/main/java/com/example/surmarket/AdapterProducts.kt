@@ -31,6 +31,12 @@ class AdapterProducts(
 
         val productImage: ImageView =
             itemView.findViewById(R.id.IMV_ITProductList_ProductImage)
+
+        val categoryText: String =
+            itemView.context.getString(R.string.category)
+
+        val priceText: String =
+            itemView.context.getString(R.string.price)
     }
 
     override fun onCreateViewHolder(
@@ -53,16 +59,16 @@ class AdapterProducts(
         val currentProduct = productsList[position]
 
         holder.category.text =
-            "Categoria: ${currentProduct.category}"
+            "${holder.categoryText}: ${currentProduct.category}"
 
         holder.productName.text =
             currentProduct.name
 
         holder.price.text =
-            "Precio: %.2f Bs.".format(currentProduct.price)
+            "${holder.priceText}: %.2f Bs.".format(currentProduct.price)
 
         holder.productImage.setImageResource(
-            R.drawable.ic_surmarket
+            R.drawable.surmarket
         )
 
         holder.buyButton.setOnClickListener {
@@ -72,5 +78,9 @@ class AdapterProducts(
 
     override fun getItemCount(): Int {
         return productsList.size
+    }
+
+    fun notifyChanged() {
+        notifyDataSetChanged()
     }
 }

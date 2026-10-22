@@ -11,17 +11,21 @@
     <string name="FRGLogin_TXVPassword">Contraseña:</string>
     <string name="FRGLogin_ETXPassword">Ingresa tu Contraseña</string>
     <string name="FRGLogin_RecoverPassword">Recuperar Contraseña</string>
-    <string name="FRGLogin_BTNLogin">INICIAR SESION</string>
+    <string name="FRGLogin_BTNLogin">INICIAR SESIÓN</string>
     <string name="loginWelcome">Bienvenido a SurMarket</string>
     <string name="loginError">Usuario o contraseña inválidos</string>
     <string name="userEmpty">Ingrese su nombre de Usuario</string>
     <string name="passwordEmpty">Ingrese su contraseña</string>
     <string name="labelLoginFragment">Login</string>
+
     <string name="FRGProductList_Title">Tienda Virtual SURMARKET</string>
     <string name="Shopping_Cart">Carrito de Compras</string>
     <string name="Search">Buscar Producto</string>
     <string name="FRGProductList_BTNAddProduct">Añadir Producto</string>
-    <string name="product">Producto\n</string>
-    <string name="ITProductList_BTNBuyProduct">Comprar</string>
-    <string name="labelProductsListFragment">Lista de Producto\n</string>
+    <string name="product">Producto</string>
+    <string name="ITProductList_BTNBuyProduct">COMPRAR</string>
+    <string name="labelProductsListFragment">Lista de Productos</string>
+    <string name="category">Categoría</string>
+    <string name="price">Precio</string>
+    <string name="addCart">Añadido al carrito: %1$s</string>
 </resources>
