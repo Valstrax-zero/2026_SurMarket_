@@ -1,5 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">SurMarket</string>
+
     <string name="FRGLogin_Title">Iniciar Sesión</string>
     <string name="FRGLogin_TXVUserName">Nombre de Usuario:</string>
     <string name="FRGLogin_ETXUserName">Ingresa tu Nombre de Usuario</string>
@@ -28,4 +31,33 @@
     <string name="category">Categoría</string>
     <string name="price">Precio</string>
     <string name="addCart">Añadido al carrito: %1$s</string>
+
+    <string name="product_image">Imagen del producto</string>
+    <string name="FRGAddProduct_BTNAddImage">AÑADIR IMAGEN</string>
+
+    <string name="FRGAddProduct_TXVProductName">Nombre del producto:</string>
+    <string name="FRGAddProduct_ETXProductName">Ingrese el nombre del producto</string>
+
+    <string name="FRGAddProduct_TXVProductPrice">Precio del producto:</string>
+    <string name="FRGAddProduct_ETXProductPrice">Ingrese el precio del producto</string>
+
+    <string name="FRGAddProduct_TXVProductStock">Cantidad disponible:</string>
+    <string name="FRGAddProduct_ETXProductStock">Ingrese la cantidad disponible</string>
+
+    <string name="FRGAddProduct_TXVProductDescription">Descripción:</string>
+    <string name="FRGAddProduct_ETXProductDescription">Ingrese la descripción del producto</string>
+
+    <string name="category_men">Varón</string>
+    <string name="category_women">Mujer</string>
+    <string name="category_children">Niños</string>
+    <string name="category_baby">Bebés</string>
+    <string name="category_shoes">Calzados</string>
+    <string name="category_accessories">Accesorios</string>
+    <string name="category_other">Otros</string>
+
+    <string name="availability_available">Disponible</string>
+    <string name="availability_not_available">No disponible</string>
+
+    <string name="FRGAddProduct_BTNAddProduct">AÑADIR PRODUCTO</string>
+
 </resources>
