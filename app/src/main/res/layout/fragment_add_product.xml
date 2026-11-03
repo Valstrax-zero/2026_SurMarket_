@@ -126,10 +126,11 @@
             android:textColorHint="@color/inputColor"
             android:textSize="@dimen/FRGEditTextTextSize" />
 
-        <LinearLayout
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/CHG_FRGAddProduct_Category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/CHP_FRGAddProduct_Men"
@@ -149,13 +150,6 @@
                 android:text="@string/category_women"
                 android:textSize="@dimen/FRGEditTextTextSize" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
             <com.google.android.material.chip.Chip
                 android:id="@+id/CHP_FRGAddProduct_Children"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
@@ -174,13 +168,6 @@
                 android:text="@string/category_baby"
                 android:textSize="@dimen/FRGEditTextTextSize" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
             <com.google.android.material.chip.Chip
                 android:id="@+id/CHP_FRGAddProduct_Shoes"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
@@ -196,18 +183,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/chip_margin_end"
-                android:text="@string/category_accessories"
+                android:text="@string/category_accesories"
                 android:textSize="@dimen/FRGEditTextTextSize" />
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/CHP_FRGAddProduct_Other"
+                android:id="@+id/CHP_FRGAddProduct_Others"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/category_other"
+                android:layout_marginEnd="@dimen/chip_margin_end"
+                android:text="@string/category_others"
                 android:textSize="@dimen/FRGEditTextTextSize" />
 
-        </LinearLayout>
+        </com.google.android.material.chip.ChipGroup>
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/CHG_FRGAddProduct_Availability"
@@ -239,7 +227,8 @@
             android:id="@+id/BTN_FRGAddProduct_AddProduct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/cardview_default_margin_bottom"
+            android:layout_marginTop="@dimen/item_marginStart"
+            android:layout_marginBottom="@dimen/FRGMarginTop"
             android:background="@drawable/bg_button_rounded"
             android:text="@string/FRGAddProduct_BTNAddProduct"
             android:textSize="@dimen/FRGButtonTextSize"

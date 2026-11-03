@@ -1,6 +1,5 @@
 package com.example.surmarket.models
 
-
 data class product(
     val id: Int,
     val name: String,
@@ -8,6 +7,6 @@ data class product(
     val price: Double,
     val imageUrl: String,
     val description: String,
-    val available: Boolean,
+    val availabel: Boolean,
     val stock: Int
 )
