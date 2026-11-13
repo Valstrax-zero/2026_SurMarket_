@@ -31,6 +31,7 @@
 
     <dimen name="item_marginStart">12dp</dimen>
     <dimen name="ITTextViewTextSize">12sp</dimen>
+    <dimen name="ITTextView_TextSize">12sp</dimen>
     <dimen name="ITMarginBottom">4dp</dimen>
     <dimen name="button_padding_horizontal">16dp</dimen>
 
@@ -41,5 +42,11 @@
     <dimen name="cardview_image_height">200dp</dimen>
     <dimen name="textview_multiline_height">90dp</dimen>
     <dimen name="chip_margin_end">8dp</dimen>
+
+    <dimen name="fragment_profile_padding">24dp</dimen>
+    <dimen name="cardview_image_height_profile">120dp</dimen>
+    <dimen name="FRGLabelTextSizeProfileUser">18sp</dimen>
+    <dimen name="FRGLabelTextSizeProfileID">14sp</dimen>
+    <dimen name="cardview_image_profile">48dp</dimen>
 
 </resources>
